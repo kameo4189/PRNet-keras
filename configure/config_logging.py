@@ -1,0 +1,11 @@
+import os
+
+LOG_OUTPUT_PATH = r"output_logging"
+if os.path.exists(LOG_OUTPUT_PATH) is False:
+    os.makedirs(LOG_OUTPUT_PATH)
+LOG_OUTPUT_FILE_NAME = r"logging.txt"
+LOG_OUTPUT_FILE_PATH = os.path.sep.join([LOG_OUTPUT_PATH, LOG_OUTPUT_FILE_NAME])
+
+DWEET_LOGGING_URL_THING_NAME = "PRN_EVAL"
+DWEET_LOGGING_URL_PAYLOAD_KEY = "log_server"
+DWEET_LOGGING_URL_PAYLOAD = {DWEET_LOGGING_URL_PAYLOAD_KEY: ""}
