@@ -63,4 +63,13 @@ To create HDF5 dataset manually, you need to run build_dataset.py with arguments
 * datamode: specify data for writing to disk, refer DATA_TYPE_MODES in file configure/config.py. Default data type is byte for saving disk space purpose, only raw file in disk is writing to HDF5 file (not read content to numpy array).
 
 ### Training model
-After building train.hdf5 and val.hdf5, run file train_model.py to train the model with arguments as below:
+After building train.hdf5 and val.hdf5, run file train_model.py to train the model some main arguments as below:
+* epochs: number of epochs 
+* batchsize: size of training batch
+* model: specify model path to restart training
+* start_epoch: epoch number to restart training at
+* learningrate: initial learning rate, default is 1e-4 (learning scheduler defined in method custom_lr_scheduler)
+* lossfunct: sepcify loss function, default is mean squared error (some loss function defined at model\nn\conv\position_map_regression.py)
+* hdf5dir: specify folder path contain train.hdf5 and val.hdf5
+
+All result of training process is output to folder output_\<learningrate\>\_\<lossfunct\>. The best eval loss model is outputted at file output_\<learningrate\>\_\<lossfunct\>\best_eval_loss.model
