@@ -60,4 +60,4 @@ To create HDF5 dataset manually, you need to run build_dataset.py with argument 
 * hdf5dir: folder path to output HDF5 dataset result
 * buildmode: specify train or val to build, refer DATASET_ZIP_NAMES, DATASET_DIRS, DATASET_MODES in file configure/config_training.py
 * extenddata: optional, get extended data or not. If True, it will get all data folder that contain specfied mode (refer logic code and DATASET_MODES)
-* datamode: specify data for writing to disk, refer DATA_TYPE_MODES in file configure/config.py. Default data type is byte, data type byte for saving disk space purpose, only raw file in disk is writing to HDF5 file (not read content to numpy array).
+* datamode: specify data for writing to disk, refer DATA_TYPE_MODES in file configure/config.py. Default data type is byte for saving disk space purpose, only raw file in disk is writing to HDF5 file (not read content to numpy array).
