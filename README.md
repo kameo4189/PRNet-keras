@@ -70,14 +70,14 @@ python build_dataset.py ...
 ```
 
 ### Training model
-After building train.hdf5 and val.hdf5, run file train_model.py to train the model some main arguments as below:
+Run file train_model.py to train the model, some main arguments as below:
 * epochs: number of epochs 
 * batchsize: size of training batch
 * model: specify model path to restart training
 * start_epoch: epoch number to restart training at
 * learningrate: initial learning rate, default is 1e-4 (learning scheduler defined in method custom_lr_scheduler)
 * lossfunct: sepcify loss function, default is mean squared error (some loss functions defined at model\nn\conv\position_map_regression.py)
-* hdf5dir: specify folder path contain train.hdf5 and val.hdf5
+* hdf5dir: specify folder path contains train.hdf5 and val.hdf5
 
 All result of training process is output to folder output_\<learningrate\>\_\<lossfunct\>. The best eval loss model is outputted at file output_\<learningrate\>\_\<lossfunct\>\best_eval_loss.model
 
@@ -88,3 +88,26 @@ python train_model.py --epochs 100 --batchsize 16 ...
 ```
 
 ## Evaluating
+The trained model is evaluated on AFLW2000-3D with evaluation type and metric same as original paper.
+Evaluation type includes (refer original paper for more detail):
+* 2D Sparse Alignment: NME (normalize mean error) on 2D coordinates of vertices of 68 landmarks
+* 2D Dense Alignment: MNE on 2D coordinates of all vertices of face
+* 2D Sparse Alignment: NME on 3D coordinates of vertices of 68 landmarks
+* 3D Dense Alignment: MNE on 3D coordinates of all vertices of face
+* 2D Face Reconstruction: NME on 2D coordinates of all vertices of face after run ICP (Iterative Closest Point)
+* 3D Face Reconstruction: MNE on 3D coordinates of all vertices of face after run ICP
+
+Run file evaluate_model.py to evaluate trained model with some main arguments as below:
+* modeldir: path to folder contain model
+* datadir: path to validation dataset folder
+* hdf5: path to validation HDF5 dataset (when hdf5 is specified, datadir is ignored)
+* outputdir: path for output validation result
+* evalidxs: specify evaluation type for running (refer EVALUATION_TYPES in configure\config_evaluating.py)
+* serverlog: logging output print to remote server or not (need to run file logger_server.py, I create this mode to be able tracking progress when running on kaggle)
+* shiftZ: with coordinates of predicted vertives, shift value of Z axis to have min = 0 before evaluating
+
+##### Run evaluating
+
+```bash
+python evaluate_model.py ...
+```
