@@ -12,6 +12,7 @@ Offical Implementation: &nbsp; [PyTorch](https://github.com/YadiraF/PRNet)
 
 * [Installation](#Installation)
 * [Training](#Training)
+* [Evaluating](#Evaluating)
 * [Testing](#Testing)
 * [References](#References)
 
@@ -62,6 +63,12 @@ To create HDF5 dataset manually, you need to run build_dataset.py with arguments
 * extenddata: optional, get extended data or not. If True, it will get all data folder that contain specfied mode (refer logic code and DATASET_MODES)
 * datamode: specify data for writing to disk, refer DATA_TYPE_MODES in file configure/config.py. Default data type is byte for saving disk space purpose, only raw file in disk is writing to HDF5 file (not read content to numpy array).
 
+##### Run building
+
+```bash
+python build_dataset.py ...
+```
+
 ### Training model
 After building train.hdf5 and val.hdf5, run file train_model.py to train the model some main arguments as below:
 * epochs: number of epochs 
@@ -69,7 +76,15 @@ After building train.hdf5 and val.hdf5, run file train_model.py to train the mod
 * model: specify model path to restart training
 * start_epoch: epoch number to restart training at
 * learningrate: initial learning rate, default is 1e-4 (learning scheduler defined in method custom_lr_scheduler)
-* lossfunct: sepcify loss function, default is mean squared error (some loss function defined at model\nn\conv\position_map_regression.py)
+* lossfunct: sepcify loss function, default is mean squared error (some loss functions defined at model\nn\conv\position_map_regression.py)
 * hdf5dir: specify folder path contain train.hdf5 and val.hdf5
 
 All result of training process is output to folder output_\<learningrate\>\_\<lossfunct\>. The best eval loss model is outputted at file output_\<learningrate\>\_\<lossfunct\>\best_eval_loss.model
+
+##### Run training
+
+```bash
+python train_model.py --epochs 100 --batchsize 16 ...
+```
+
+## Evaluating
