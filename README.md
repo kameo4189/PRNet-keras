@@ -52,7 +52,7 @@ You can download created HDF5 dataset for train and val in [Link](https://drive.
 * train.hdf5: created from 300W-LP dataset 
 * val.hdf5: created from AFLW2000-3D dataset.  
 
-To create HDF5 dataset manually, you need to run build_dataset.py with argument as below:
+To create HDF5 dataset manually, you need to run build_dataset.py with arguments as below:
 * batch: number of images from dataset for processing at each loop
 * bufsize: number of images from dataset for write to disk 
 * zipDir: folder path contains downloaded zip dataset file (optional, no need when specify extracted path in extractdir argument)
@@ -61,3 +61,6 @@ To create HDF5 dataset manually, you need to run build_dataset.py with argument 
 * buildmode: specify train or val to build, refer DATASET_ZIP_NAMES, DATASET_DIRS, DATASET_MODES in file configure/config_training.py
 * extenddata: optional, get extended data or not. If True, it will get all data folder that contain specfied mode (refer logic code and DATASET_MODES)
 * datamode: specify data for writing to disk, refer DATA_TYPE_MODES in file configure/config.py. Default data type is byte for saving disk space purpose, only raw file in disk is writing to HDF5 file (not read content to numpy array).
+
+### Training model
+After building train.hdf5 and val.hdf5, run file train_model.py to train the model with arguments as below:
