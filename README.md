@@ -89,7 +89,7 @@ All result of training process is output to folder output_\<learningrate\>\_\<lo
 python train_model.py --epochs 100 --batchsize 16 ...
 ```
 
-##### Training result
+##### Training result <a name="training_result"></a>
 Loss result for model after trained with configure: batch size 16, initial learning rate 1e-4 and augment same as original paper.  
 The min eval loss is reached at epoch 73.  
 Graph of train loss and eval loss
@@ -120,4 +120,4 @@ python evaluate_model.py ...
 ```
 
 ##### Evaluating result
-Evaluating result of min eval loss model in [Training result](#####Training result)
+Evaluating result of min eval loss model in [Training result](#training_result)
