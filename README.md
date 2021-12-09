@@ -93,13 +93,14 @@ python train_model.py --epochs 100 --batchsize 16 ...
 Loss result for model after trained with configure: batch size 16, initial learning rate 1e-4 and augment same as original paper.  
 The min eval loss is reached at epoch 73.  
 Graph of train loss and eval loss
+<INSERT LOSS RESULT FIGURE>
 
 ## Evaluating
 The trained model is evaluated on AFLW2000-3D with evaluation type and metric same as original paper.
 Evaluation type includes (refer original paper for more detail):
 * 2D Sparse Alignment: NME (normalize mean error) on 2D coordinates of vertices of 68 landmarks
 * 2D Dense Alignment: MNE on 2D coordinates of all vertices of face
-* 2D Sparse Alignment: NME on 3D coordinates of vertices of 68 landmarks
+* 3D Sparse Alignment: NME on 3D coordinates of vertices of 68 landmarks
 * 3D Dense Alignment: MNE on 3D coordinates of all vertices of face
 * 2D Face Reconstruction: NME on 2D coordinates of all vertices of face after run ICP (Iterative Closest Point)
 * 3D Face Reconstruction: MNE on 3D coordinates of all vertices of face after run ICP
@@ -121,3 +122,7 @@ python evaluate_model.py ...
 
 ##### Evaluating result
 Evaluating result of min eval loss model in [Training result](#training_result)
+<INSERT EVAL RESULT FIGURE>
+Above evaluating result is fine but isn't good as result in original paper.
+
+## Testing
