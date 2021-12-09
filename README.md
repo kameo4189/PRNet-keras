@@ -49,7 +49,7 @@ The implementation use [300W-LP](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/proje
 
 ### Build HDF5 dataset
 The training process doesn't use image and mat files directly form above datasets, you need to zip these image and mat files to HDF5 file.
-You can download created HDF5 dataset for train and val from this [link](https://drive.google.com/drive/folders/11AsRtIo4fj7-9UneeAfHP3Mw0ZS4GrtK?usp=sharing):
+You can download created HDF5 dataset for train and val from [here](https://drive.google.com/drive/folders/11AsRtIo4fj7-9UneeAfHP3Mw0ZS4GrtK?usp=sharing):
 * train.hdf5: created from 300W-LP dataset 
 * val.hdf5: created from AFLW2000-3D dataset.  
 
@@ -126,3 +126,5 @@ Evaluating result of min eval loss model in [Training result](#training_result)
 Above evaluating result is fine but isn't good as result in original paper.
 
 ## Testing
+For testing, I implemented application for display uvmap, restored point cloud (using pptk libary) and restored mesh (using open3d library).  
+Trained model can be download [here](https://drive.google.com/file/d/11OrU4Pyk5LlfaQ_z7BkC2BzGKj2OSb9y/view?usp=sharing), please extract it in to any folder and specify this path to argument.  
