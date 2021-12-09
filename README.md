@@ -86,7 +86,7 @@ All result of training process is output to folder output_\<learningrate\>\_\<lo
 ##### Run training
 
 ```bash
-python train_model.py --epochs 100 --batchsize 16 ...
+python train_model.py --epochs 100 --batchsize 16 --learningrate 1e-4 ...
 ```
 
 ##### Training result <a name="training_result"></a>
@@ -111,13 +111,13 @@ Run file *evaluate_model.py* to evaluate trained model with some main arguments 
 * hdf5: path to validation HDF5 dataset (when hdf5 is specified, datadir is ignored)
 * outputdir: path for output validation result
 * evalidxs: specify evaluation type for running (refer EVALUATION_TYPES in *configure\config_evaluating.py*)
-* serverlog: logging output print to remote server or not (need to run file logger_server.py, I create this mode to be able tracking progress when running on kaggle)
-* shiftZ: with coordinates of predicted vertives, shift value of Z axis to have min = 0 before evaluating
+* serverlog: logging output print to remote server or not (optional, need to run file *logger_server.py* when turn on, I create this mode to be able tracking progress when running on kaggle)
+* shiftZ: with coordinates of predicted vertives, shift value of Z axis to have min = 0 before evaluating. The result will be more accuracy when shifting value of Z axis to have min = 0 and compare with original vertices (also already shifted to have min Z = 0).
 
 ##### Run evaluating
 
 ```bash
-python evaluate_model.py ...
+python evaluate_model.py --evalidxs 0 1 2 3 4 5 --serverlog 0 --shiftZ 1 ...
 ```
 
 ##### Evaluating result
