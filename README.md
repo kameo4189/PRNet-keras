@@ -120,4 +120,4 @@ python evaluate_model.py ...
 ```
 
 ##### Evaluating result
-Evaluating result of min eval loss model after trained on 100 epochs with configure: 
+Evaluating result of min eval loss model in [Training result](#####Training result)
