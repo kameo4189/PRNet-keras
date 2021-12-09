@@ -128,3 +128,6 @@ Above evaluating result is fine but isn't good as result in original paper.
 ## Testing
 For testing, I implemented application for display uvmap, restored point cloud (using pptk libary) and restored mesh (using open3d library).  
 Trained model can be download [here](https://drive.google.com/file/d/11OrU4Pyk5LlfaQ_z7BkC2BzGKj2OSb9y/view?usp=sharing), please extract it in to any folder and specify this path to argument.  
+Run file *load_model.py* to test trained model with arguments as below:
+* image: path to image for testing
+* model: path to trained model
