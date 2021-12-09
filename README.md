@@ -121,7 +121,7 @@ python evaluate_model.py ...
 ```
 
 ##### Evaluating result
-Evaluating result of min eval loss model in [Training result](#training_result)
+Evaluating result of min eval loss model in [Training result](#training_result)  
 <INSERT EVAL RESULT FIGURE>
 Above evaluating result is fine but isn't good as result in original paper.
 
