@@ -131,3 +131,8 @@ Trained model can be download [here](https://drive.google.com/file/d/11OrU4Pyk5L
 Run file *load_model.py* to test trained model with arguments as below:
 * image: path to image for testing
 * model: path to trained model
+  
+#### 1. Test on image
+```bash
+python load_model.py --image <testing image path> --model <model path>
+```
