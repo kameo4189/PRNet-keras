@@ -518,7 +518,7 @@ if __name__ == "__main__":
     config_evaluating.createEvaluationInfos(baseEvaluationPath=EVALUATION_PATH)
 
 
-    OUTPUT_DIR = r"M:\My Drive\CaoHoc\LUANVAN\SourceCode\output_wtmse_0.0002"
+    OUTPUT_DIR = r"M:\My Drive\CaoHoc\LUANVAN\SourceCode\output_wtmse_0.0001"
     MODEL_PATH = os.path.sep.join([OUTPUT_DIR, config_training.BEST_VAL_LOSS_MODEL_FILE_NAME])
 
 

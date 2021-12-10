@@ -36,10 +36,10 @@ ap.add_argument("-hd", "--hdf5dir", type=str,
     help="path to output hdf5 dataset")
 ap.add_argument("-bm", "--buildmode", type=str,
     default=r"val",
-    help="train or val or all_val")
-ap.add_argument("-va", "--valaugment", type=bool,
-    default=True,
-    help="is getting val augment dataset")
+    help="train or val")
+ap.add_argument("-ex", "--extenddata", type=bool,
+    default=False,
+    help="is getting extend data")
 ap.add_argument("-dm", "--datamode", type=int, default=5,
     help="small size or normal dataset")
 args = vars(ap.parse_args())
@@ -48,7 +48,7 @@ DATA_MODE = args["datamode"]
 BATCH_SIZE = args["batch"]
 BUF_SIZE = args["bufsize"]
 BUILD_MODE = args["buildmode"]
-VAL_AUGMENT = args["valaugment"]
+EXTEND_DATA = args["extenddata"]
 DATA_ZIP_PATH = args["zipDir"]
 DATASET_EXTRACT_PATH = args["extractdir"]
 OUTPUT_DIR = args["hdf5dir"]
@@ -58,7 +58,7 @@ if os.path.exists(OUTPUT_DIR) is False:
     os.mkdir(OUTPUT_DIR)
 
 datasetModes = config_training.DATASET_MODES[:]
-if VAL_AUGMENT is True:
+if EXTEND_DATA is True:
     modeIndexes = [i for i in range(len(datasetModes)) if BUILD_MODE in datasetModes[i]]
 else:
     modeIndexes = [i for i in range(len(datasetModes)) if datasetModes[i]==BUILD_MODE]

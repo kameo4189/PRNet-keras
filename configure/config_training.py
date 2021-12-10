@@ -3,7 +3,6 @@ from os import path
 
 # url to dataset
 DATA_PATH = "data"
-NPY_POSMAP_DATA_PATH = os.path.sep.join([DATA_PATH, "npy"])
 DATASET_URLS = [r"http://www.cbsr.ia.ac.cn/users/xiangyuzhu/projects/3DDFA/Database/AFLW2000-3D.zip",
                 r"https://drive.google.com/u/0/uc?export=download&confirm=RQoB&id=0B7OEHD3T4eCkVGs0TkhUWFN6N1k",
                 None]

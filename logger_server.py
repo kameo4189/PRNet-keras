@@ -35,12 +35,8 @@ def ConstructLoggerServer(sharingDict):
 
     @app.on_event("startup")
     def initialize():
-        # try:
-        #     postServerUrl()
-        #     sharingDict["ServerURL"] = app.servers[0].url.public_url
-        # finally:
-        #     sharingDict["ServerStartEvent"].set()
-        postServerUrl()
+        if (isinstance(app.servers[0].url, server_methods.LocalUrl) is False):
+            postServerUrl()
 
     @app.get('/')
     def index():

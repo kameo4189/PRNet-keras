@@ -49,8 +49,6 @@ model = load_model(MODEL_PATH, compile=False)
 print("[INFO] Predicting for uv position map...")
 uvmaps = model.predict(np.array(faceImages))
 uvmaps = [uvmap for uvmap in uvmaps]
-posScale = 256. * 1.1
-uvmaps = [uvmap / posScale if np.mean(uvmap) > 1.0 else uvmap for uvmap in uvmaps]
 plt.figure(1)
 for i, (faceImage, uvmap) in enumerate(zip(faceImages, uvmaps)):
     stackImage = np.concatenate((faceImage, uvmap), axis=1)
@@ -65,7 +63,7 @@ from util import mesh_render
 uvr = UVMapRestoring()
 oc = ObjCreating()
 i3t2 = Image3DTo2D()
-(h,w,_) = image.shape
+(h, w) = image.shape[:2]
 
 plt.figure(2)
 plt.imshow(image)

@@ -2,8 +2,13 @@ from colabcode import ColabCode
 import nest_asyncio
 import uvicorn
 from pyngrok import ngrok
+from pyngrok import exception
 import threading
 from util import url_methods
+
+class LocalUrl:
+    def __init__(self, port) -> None:
+        self.public_url = r"http://localhost:" + str(port)
 
 class ColabCodeExtend(ColabCode):
     def __init__(self, port=10000, password=None, authtoken=None, mount_drive=False, code=True, lab=False):
@@ -24,6 +29,7 @@ class ColabCodeExtend(ColabCode):
 
     def run_app(self, app, workers=1, log_level=None):
         self.app = app
+        self.url = None
         app.servers.append(self)
         self.workers = workers
         self.log_level = log_level
@@ -33,7 +39,12 @@ class ColabCodeExtend(ColabCode):
         self._start()
  
     def _start(self):
-        self._start_server()
+        try:
+            self._start_server()
+        except exception.PyngrokNgrokError as ex:
+            print("[ERROR] Can't start ngrok server: {}".format(str(ex)))
+            self.url = LocalUrl(self.port)
+
         nest_asyncio.apply()
         uvicorn.run(self.app, host="127.0.0.1", port=self.port, workers=self.workers, log_level=self.log_level)
 
