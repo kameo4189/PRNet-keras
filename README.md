@@ -139,4 +139,6 @@ python load_model.py --image <testing image path> --model <model path>
 ```
   
 ##### Example result
-
+|uvmap|alignment|Mesh|PointCloud|
+|-----|---------|----|----------|
+|<img src="evaluation_result/Test_image_example_uvmap.PNG">|<img src="evaluation_result/Test_image_example_alignment.PNG">|<img src="evaluation_result/Test_image_example_mesh.PNG">|<img src="evaluation_result/Test_image_example_pointcloud.PNG">|
