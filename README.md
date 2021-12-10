@@ -93,7 +93,7 @@ python train_model.py --epochs 100 --batchsize 16 --learningrate 1e-4 ...
 Loss result for model after trained with configure: batch size 16, initial learning rate 1e-4 and augment same as original paper.  
 The min eval loss is reached at epoch 73.  
 Graph of train loss and eval loss
-<INSERT LOSS RESULT FIGURE>
+<img src="evaluation_result/metrics_loss.png">
 
 ## Evaluating
 The trained model is evaluated on AFLW2000-3D with evaluation type and metric same as original paper.
@@ -122,7 +122,7 @@ python evaluate_model.py --evalidxs 0 1 2 3 4 5 --serverlog 0 --shiftZ 1 ...
 
 ##### Evaluating result
 Evaluating result of min eval loss model in [Training result](#training_result)  
-<INSERT EVAL RESULT FIGURE>
+<img src="evaluation_result/FACE_RESTORING_EVALUATION_CED.png">
 Above evaluating result is fine but isn't good as result in original paper.
 
 ## Testing
@@ -137,3 +137,6 @@ Run file *load_model.py* to test trained model with arguments as below:
 ```bash
 python load_model.py --image <testing image path> --model <model path>
 ```
+  
+##### Example result
+
