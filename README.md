@@ -92,7 +92,7 @@ python train_model.py --epochs 100 --batchsize 16 --learningrate 1e-4 ...
 ##### Training result <a name="training_result"></a>
 Loss result for model after trained with configure: batch size 16, initial learning rate 1e-4 and augment same as original paper.  
 The min eval loss is reached at epoch 73.  
-Graph of train loss and eval loss
+Graph of train loss and eval loss  
 <img src="evaluation_result/metrics_loss.png">
 
 ## Evaluating
@@ -122,7 +122,7 @@ python evaluate_model.py --evalidxs 0 1 2 3 4 5 --serverlog 0 --shiftZ 1 ...
 
 ##### Evaluating result
 Evaluating result of min eval loss model in [Training result](#training_result)  
-<img src="evaluation_result/FACE_RESTORING_EVALUATION_CED.png">
+<img src="evaluation_result/FACE_RESTORING_EVALUATION_CED.png">  
 Above evaluating result is fine but isn't good as result in original paper.
 
 ## Testing
