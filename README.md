@@ -143,3 +143,4 @@ python load_model.py --image <testing image path> --model <model path>
 |---------------|------------|----|----------|
 |<img src="evaluation_result/Test_image_example_uvmap.PNG">|<img src="evaluation_result/Test_image_example_alignment.PNG">|<img src="evaluation_result/Test_image_example_mesh.PNG">|<img src="evaluation_result/Test_image_example_pointcloud.PNG">|
 |<img src="evaluation_result/Test_image_2_example_uvmap.PNG">|<img src="evaluation_result/Test_image_2_example_alignment.PNG">|<img src="evaluation_result/Test_image_2_example_mesh.PNG">|<img src="evaluation_result/Test_image_2_example_pointcloud.PNG">|
+|<img src="evaluation_result/Test_image_3_example_uvmap.PNG">|<img src="evaluation_result/Test_image_3_example_alignment.PNG">|<img src="evaluation_result/Test_image_3_example_mesh.PNG">|<img src="evaluation_result/Test_image_3_example_pointcloud.PNG">|
