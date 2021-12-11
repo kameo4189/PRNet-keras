@@ -66,7 +66,7 @@ To create HDF5 dataset manually, you need to run *build_dataset.py* with argumen
 ##### Run building
 
 ```bash
-python build_dataset.py ...
+python build_dataset.py --batch 200 --bufsize 1000 --extractdir <path to dir contained extracted dataset dir> --hdf5dir <path to output dir> --buildmode <train|val> --datamode 5
 ```
 
 ### Training model
@@ -86,7 +86,7 @@ All result of training process is output to folder output_\<learningrate\>\_\<lo
 ##### Run training
 
 ```bash
-python train_model.py --epochs 100 --batchsize 16 --learningrate 1e-4 ...
+python train_model.py --epochs 100 --batchsize 16 --learningrate 1e-4 --lossfunct wtmse --hdf5dir <path to dir contain HDF5 datasets>
 ```
 
 ##### Training result <a name="training_result"></a>
@@ -117,7 +117,7 @@ Run file *evaluate_model.py* to evaluate trained model with some main arguments 
 ##### Run evaluating
 
 ```bash
-python evaluate_model.py --evalidxs 0 1 2 3 4 5 --serverlog 0 --shiftZ 1 ...
+python evaluate_model.py --modeldir <path to model> --hdf5 <path to val.hdf5> --batchsize 10 --outputdir <path to output dir> --evalidxs 0 1 2 3 4 5 --serverlog 0 --serverlog 0 --shiftZ 1
 ```
 
 ##### Evaluating result
@@ -138,9 +138,12 @@ Run file *load_model.py* to test trained model with arguments as below:
 python load_model.py --image <testing image path> --model <model path>
 ```
   
-##### Example result
+##### Example results
 |UV position map|2D Alignment|Mesh|PointCloud|
 |---------------|------------|----|----------|
 |<img src="evaluation_result/Test_image_example_uvmap.PNG">|<img src="evaluation_result/Test_image_example_alignment.PNG">|<img src="evaluation_result/Test_image_example_mesh.PNG">|<img src="evaluation_result/Test_image_example_pointcloud.PNG">|
 |<img src="evaluation_result/Test_image_2_example_uvmap.PNG">|<img src="evaluation_result/Test_image_2_example_alignment.PNG">|<img src="evaluation_result/Test_image_2_example_mesh.PNG">|<img src="evaluation_result/Test_image_2_example_pointcloud.PNG">|
 |<img src="evaluation_result/Test_image_3_example_uvmap.PNG">|<img src="evaluation_result/Test_image_3_example_alignment.PNG">|<img src="evaluation_result/Test_image_3_example_mesh.PNG">|<img src="evaluation_result/Test_image_3_example_pointcloud.PNG">|
+
+#### 2. Demo with HTTP server
+To make it convenient, I created a RestfulAPI server for requesting predicted restored mesh on both local and the internet (using ngrok url by [ColabCode](https://github.com/abhishekkrthakur/colabcode) library)
