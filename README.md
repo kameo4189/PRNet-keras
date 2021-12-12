@@ -146,15 +146,15 @@ python load_model.py --image <testing image path> --model <model path>
 |<img src="evaluation_result/Test_image_3_example_uvmap.PNG">|<img src="evaluation_result/Test_image_3_example_alignment.PNG">|<img src="evaluation_result/Test_image_3_example_mesh.PNG">|<img src="evaluation_result/Test_image_3_example_pointcloud.PNG">|
 
 #### 2. Demo with HTTP server
-To make it convenient, I created a HTTP server that using RestfulAPI for requesting restored mesh on both local and the internet (using [ColabCode](https://github.com/abhishekkrthakur/colabcode) library).
-Attention is these APIs of server receive and send files that are converted to string and put inside json body. When receiving files by json, you need to convert files back from string type.
-To convert a file to string, you need to read all file to byte array and convert it to its equivalent string representation that is encoded with base-64 digits.  
+To make it convenient, I created a HTTP server that using RestfulAPI for requesting restored mesh on both local and the internet (using [ColabCode](https://github.com/abhishekkrthakur/colabcode) library).  
+Attention is these APIs of server receive and send files that are converted to string and put inside json body. When receiving files by json, you need to convert files back from string type.  
+To convert a file to string, you need to read all file to byte array and convert to its equivalent string representation that is encoded with base-64 digits.  
   |Language|Source Code|
   |--------|-----------|
   |Python|``` base64Str = base64.b64encode(byteArray).decode() ```|
   |C#|``` string base64Str = Convert.ToBase64String(byteArray); ```|
  
-To convert a string back to file, byte array of file content is an 8-bit unsigned integer array which is equivalent to base-64 digits encoded string.
+To convert a string back to file, byte array of file content is get from an 8-bit unsigned integer array, which is equivalent to base-64 digits encoded string.
   |Language|Source Code|
   |--------|-----------|
   |Python|``` byteArray = base64.b64decode(base64Str) ```|
@@ -180,7 +180,7 @@ For reading  mesh file result, you can use [scipy.io.loadmat](https://docs.scipy
     { "message": "This is the homepage of the PRNet API" }
     ```
 2. Path: "/extract"
-    * Description: Get 3D mesh from original mat file
+    * Description: Get 3D mesh from 2D images and original mat files
     * Type: POST
     * Input: 
     ```json 
@@ -199,7 +199,7 @@ For reading  mesh file result, you can use [scipy.io.loadmat](https://docs.scipy
       ] 
     }
     ```
-     * Output: 
+    * Output: 
     ```json 
     { 
       "imageMeshList": [
@@ -229,3 +229,8 @@ For reading  mesh file result, you can use [scipy.io.loadmat](https://docs.scipy
       ]
     }
     ```
+2. Path: "/predict"
+    * Description: Get 3D face mesh from 2D images
+    * Type: POST
+    * Input: same as Input for path "/extract", put empty string in rawMats when not existing mat files for images.
+    * Output: same as Output for path "/extract"
