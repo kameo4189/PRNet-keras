@@ -147,6 +147,28 @@ python load_model.py --image <testing image path> --model <model path>
 
 #### 2. Demo with HTTP server
 To make it convenient, I created a RestfulAPI server for requesting predicted restored mesh on both local and the internet (using ngrok url by [ColabCode](https://github.com/abhishekkrthakur/colabcode) library)
+Attention is that APIs of server receive and send files that are converted to string and put inside json body. When sending or receiving files by json, you need to convert files back from string type.  
+To convert a file to string, you need to read all file to byte array and convert it to its equivalent string representation that is encoded with base-64 digits.  
+  |Language|Source Code|
+  |--------|-----------|
+  |Python|``` base64Str = base64.b64encode(byteArray).decode() ```|
+  |C#|``` string base64Str = Convert.ToBase64String(byteArray); ```|
+ 
+To convert a string back to file, you need to convert this string, which encodes binary data as base-64 digits, an equivalent 8-bit unsigned integer array.
+  |Language|Source Code|
+  |--------|-----------|
+  |Python|``` byteArray = base64.b64decode(base64Str) ```|
+  |C#|``` byte[] byteArray = Convert.FromBase64String(base64Str); ```|
+  
+An output mesh is get from response is a mat file which is converted to string, this mat file contains variables as below:
+* vertices: array of coordinates of vertices, shape is [number of vertices, 3], data type is float.
+* colors: array of colors of vertices, shape is [number of vertices, 3], data type is float.
+* full_triangles: array of triangle indexes, shape is [number of triangles, 3], data type is int.
+* vertex_normals: array of normals of vertices, shape is [number of vertices, 3], data type is float.
+* kptIdxs: array of indexes of keypoints, shape is [number of vertices], data type is int.
+* bounding_box: array of min and max values of each axis, shape is [6], data type is float.  
+
+For reading  mesh file result, you can use [scipy.io.loadmat](https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.loadmat.html) in python and [MatFileHandler](https://github.com/mahalex/MatFileHandler) in C#.  
 
 #### APIs
 
@@ -174,6 +196,17 @@ To make it convenient, I created a RestfulAPI server for requesting predicted re
             "rawMats": ["<string converted from mat file 1>", "<string converted from mat file 2>", ...]
           },
           ...
+      ] 
+    }
+    ```
+     * Output: 
+    ```json 
+    { 
+      "imageMeshList": [
+         "faceMeshList": [
+            "rawMesh": "<string converted from mat file 1>",
+            "faceBB": ["<center of X>", "<center of Y>", "<size of bounding box>"]
+         ]
       ] 
     }
     ```
