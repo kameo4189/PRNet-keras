@@ -147,3 +147,33 @@ python load_model.py --image <testing image path> --model <model path>
 
 #### 2. Demo with HTTP server
 To make it convenient, I created a RestfulAPI server for requesting predicted restored mesh on both local and the internet (using ngrok url by [ColabCode](https://github.com/abhishekkrthakur/colabcode) library)
+
+#### APIs
+
+1. Path: "/"
+    * Description: The root-endpoint of the API
+    * Type: GET
+    * Output: 
+    ```json 
+    { "message": "This is the homepage of the PRNet API" }
+    ```
+2. Path: "/extract"
+    * Description: Get 3D mesh from original mat file
+    * Type: POST
+    * Input: 
+    ```json 
+    { 
+      "matType": "<normal or dotnet>", 
+      "imageMatList": [
+          {
+            "rawImage": "<string converted from image file>",
+            "rawMats": ["<string converted from mat file 1>", "<string converted from mat file 2>", ...]
+          },
+          {
+            "rawImage": "<string converted from image file>",
+            "rawMats": ["<string converted from mat file 1>", "<string converted from mat file 2>", ...]
+          },
+          ...
+      ] 
+    }
+    ```
