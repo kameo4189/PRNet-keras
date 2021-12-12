@@ -229,8 +229,48 @@ For reading  mesh file result, you can use [scipy.io.loadmat](https://docs.scipy
       ]
     }
     ```
-2. Path: "/predict"
+3. Path: "/predict"
     * Description: Get 3D face mesh from 2D images
     * Type: POST
     * Input: same as Input for path "/extract", put empty string in rawMats when not existing mat files for images.
     * Output: same as Output for path "/extract"
+4. Path: "/evaluate"
+    * Description: Get evaluation result between predicted mesh and original mesh
+    * Type: POST
+    * Input: 
+    ```json 
+    { 
+      "imageMatList": [
+          {
+            "rawImage": "<string converted from image file 1>",
+            "rawOrgMats": ["<string converted from org mat file 1 of image file 1>", "<string converted from org mat file 2 of image file 1>", ...]
+            "rawPredictMats": ["<string converted from predicted mat file 1 of image file 1>", "<string converted from predicted mat file 2 of image file 1>", ...]
+          },
+          {
+            "rawImage": "<string converted from image file 2>",
+            "rawOrgMats": ["<string converted from org mat file 1 of image file 2>", "<string converted from org mat file 2 of image file 2>", ...]
+            "rawPredictMats": ["<string converted from predicted mat file 1 of image file 2>", "<string converted from predicted mat file 2 of image file 2>", ...]
+          },
+          ...
+      ] 
+    }
+    ```
+    * Output: 
+    ```json 
+    { 
+      "evaluationTypes": ["sparse 2D", "sparse 3D", "dense 2D", "dense 3D", "reconstruction 2D", "reconstruction 3D"],
+      "evaluationDataList": [
+        "imageEvalValues": [
+          "evalValues": ["<sparse 2D value of >", "<sparse 3D value>", "<dense 2D value>", "<dense 3D value>", "<reconstruction 2D value>", "<reconstruction 3D value>"],
+          "evalValues": ["<sparse 2D value>", "<sparse 3D value>", "<dense 2D value>", "<dense 3D value>", "<reconstruction 2D value>", "<reconstruction 3D value>"],
+          ...
+        ],
+        "imageEvalValues": [
+          "evalValues": ["<sparse 2D value of >", "<sparse 3D value>", "<dense 2D value>", "<dense 3D value>", "<reconstruction 2D value>", "<reconstruction 3D value>"],
+          "evalValues": ["<sparse 2D value>", "<sparse 3D value>", "<dense 2D value>", "<dense 3D value>", "<reconstruction 2D value>", "<reconstruction 3D value>"],
+          ...
+        ],
+        ...
+      ]
+    }
+    ```
