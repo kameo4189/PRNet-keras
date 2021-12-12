@@ -146,15 +146,15 @@ python load_model.py --image <testing image path> --model <model path>
 |<img src="evaluation_result/Test_image_3_example_uvmap.PNG">|<img src="evaluation_result/Test_image_3_example_alignment.PNG">|<img src="evaluation_result/Test_image_3_example_mesh.PNG">|<img src="evaluation_result/Test_image_3_example_pointcloud.PNG">|
 
 #### 2. Demo with HTTP server
-To make it convenient, I created a RestfulAPI server for requesting predicted restored mesh on both local and the internet (using ngrok url by [ColabCode](https://github.com/abhishekkrthakur/colabcode) library)
-Attention is that APIs of server receive and send files that are converted to string and put inside json body. When sending or receiving files by json, you need to convert files back from string type.  
+To make it convenient, I created a HTTP server that using RestfulAPI for requesting restored mesh on both local and the internet (using [ColabCode](https://github.com/abhishekkrthakur/colabcode) library).
+Attention is these APIs of server receive and send files that are converted to string and put inside json body. When receiving files by json, you need to convert files back from string type.
 To convert a file to string, you need to read all file to byte array and convert it to its equivalent string representation that is encoded with base-64 digits.  
   |Language|Source Code|
   |--------|-----------|
   |Python|``` base64Str = base64.b64encode(byteArray).decode() ```|
   |C#|``` string base64Str = Convert.ToBase64String(byteArray); ```|
  
-To convert a string back to file, you need to convert this string, which encodes binary data as base-64 digits, an equivalent 8-bit unsigned integer array.
+To convert a string back to file, byte array of file content is an 8-bit unsigned integer array which is equivalent to base-64 digits encoded string.
   |Language|Source Code|
   |--------|-----------|
   |Python|``` byteArray = base64.b64decode(base64Str) ```|
@@ -188,12 +188,12 @@ For reading  mesh file result, you can use [scipy.io.loadmat](https://docs.scipy
       "matType": "<normal or dotnet>", 
       "imageMatList": [
           {
-            "rawImage": "<string converted from image file>",
-            "rawMats": ["<string converted from mat file 1>", "<string converted from mat file 2>", ...]
+            "rawImage": "<string converted from image file 1>",
+            "rawMats": ["<string converted from mat file 1 of image file 1>", "<string converted from mat file 2 of image file 1>", ...]
           },
           {
-            "rawImage": "<string converted from image file>",
-            "rawMats": ["<string converted from mat file 1>", "<string converted from mat file 2>", ...]
+            "rawImage": "<string converted from image file 2>",
+            "rawMats": ["<string converted from mat file 1 of image file 2>", "<string converted from mat file 2 of image file 2>", ...]
           },
           ...
       ] 
@@ -203,10 +203,29 @@ For reading  mesh file result, you can use [scipy.io.loadmat](https://docs.scipy
     ```json 
     { 
       "imageMeshList": [
-         "faceMeshList": [
-            "rawMesh": "<string converted from mat file 1>",
+        "faceMeshList": [
+          {
+            "rawMesh": "<string converted from mesh mat file 1 of image file 1>",
             "faceBB": ["<center of X>", "<center of Y>", "<size of bounding box>"]
-         ]
-      ] 
+          },
+          {
+            "rawMesh": "<string converted from mesh mat file 2 of image file 1>",
+            "faceBB": ["<center of X>", "<center of Y>", "<size of bounding box>"]
+          }
+          ...
+         ],
+        "faceMeshList": [
+          {
+            "rawMesh": "<string converted from mesh mat file 1 of image file 2>",
+            "faceBB": ["<center of X>", "<center of Y>", "<size of bounding box>"]
+          },
+          {
+            "rawMesh": "<string converted from mesh mat file 2 of image file 2>",
+            "faceBB": ["<center of X>", "<center of Y>", "<size of bounding box>"]
+          }
+          ...
+         ],
+         ...
+      ]
     }
     ```
