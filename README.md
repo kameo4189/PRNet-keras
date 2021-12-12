@@ -117,7 +117,7 @@ Run file *evaluate_model.py* to evaluate trained model with some main arguments 
 ##### Run evaluating
 
 ```bash
-python evaluate_model.py --modeldir <path to model> --hdf5 <path to val.hdf5> --batchsize 10 --outputdir <path to output dir> --evalidxs 0 1 2 3 4 5 --serverlog 0 --serverlog 0 --shiftZ 1
+python evaluate_model.py --modeldir <path to model> --hdf5 <path to val.hdf5> --batchsize 10 --outputdir <path to output dir> --evalidxs 0 1 2 3 4 5 --serverlog 0 --shiftZ 1
 ```
 
 ##### Evaluating result
