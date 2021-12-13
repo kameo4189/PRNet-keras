@@ -27,6 +27,9 @@ git clone git@https://github.com/kameo4189/PRNet-keras.git
 cd PRNet-keras
 ```
 
+### Extracting zip
+* Extracting file *resource/BFM/BFM.zip.001* to *resource/BFM* folder.
+
 ### Conda
 ```bash
 conda create --name PRNet-keras --file requirements.txt
@@ -38,7 +41,6 @@ conda activate PRNet-keras
 ```bash
 pip install -r requirements.txt
 ```
-
 
 ****
 
@@ -266,7 +268,7 @@ For reading  mesh file result, you can use [scipy.io.loadmat](https://docs.scipy
       "evaluationTypes": ["sparse 2D", "sparse 3D", "dense 2D", "dense 3D", "reconstruction 2D", "reconstruction 3D"],
       "evaluationDataList": [
         "imageEvalValues": [
-          "evalValues": ["<sparse 2D value of >", "<sparse 3D value>", "<dense 2D value>", "<dense 3D value>", "<reconstruction 2D value>", "<reconstruction 3D value>"],
+          "evalValues": ["<sparse 2D value>", "<sparse 3D value>", "<dense 2D value>", "<dense 3D value>", "<reconstruction 2D value>", "<reconstruction 3D value>"],
           "evalValues": ["<sparse 2D value>", "<sparse 3D value>", "<dense 2D value>", "<dense 3D value>", "<reconstruction 2D value>", "<reconstruction 3D value>"],
           ...
         ],
