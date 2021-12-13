@@ -147,6 +147,13 @@ python load_model.py --image <testing image path> --model <model path>
 
 #### 2. Demo with HTTP server
 To make it convenient, I created a HTTP server that using RestfulAPI for requesting restored mesh on both local and the internet (using [ColabCode](https://github.com/abhishekkrthakur/colabcode) library).  
+ 
+#### Run server
+```bash
+python load_model_server.py --model <model path>
+```
+
+#### APIs
 Attention is these APIs of server receive and send files that are converted to string and put inside json body. When receiving files by json, you need to convert files back from string type.  
 To convert a file to string, you need to read all file to byte array and convert to its equivalent string representation that is encoded with base-64 digits.  
   |Language|Source Code|
@@ -168,9 +175,7 @@ An output mesh is get from response is a mat file which is converted to string, 
 * kptIdxs: array of indexes of keypoints, shape is [number of vertices], data type is int.
 * bounding_box: array of min and max values of each axis, shape is [6], data type is float.  
 
-For reading  mesh file result, you can use [scipy.io.loadmat](https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.loadmat.html) in python and [MatFileHandler](https://github.com/mahalex/MatFileHandler) in C#.  
-
-#### APIs
+For reading  mesh file result, you can use [scipy.io.loadmat](https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.loadmat.html) in python and [MatFileHandler](https://github.com/mahalex/MatFileHandler) in C#. 
 
 1. Path: "/"
     * Description: The root-endpoint of the API
@@ -274,3 +279,21 @@ For reading  mesh file result, you can use [scipy.io.loadmat](https://docs.scipy
       ]
     }
     ```
+    
+## References
+Thanks for these source codes and libraries helping me to complete this repository.
+
+- https://github.com/YadiraF/PRNet (Official)
+    - PRNet architecture and API.
+- https://github.com/YadiraF/face3d
+    - Dataset generaton for position maps.
+- https://github.com/abhishekkrthakur/colabcode
+- https://fastapi.tiangolo.com/
+    - Library for creating HTTP server for both local and internet
+- http://www.open3d.org/
+- https://github.com/heremaps/pptk
+    - Libraries for displaying 3D face result
+- https://github.com/pglira/simpleICP
+    - Implementation of Iteractive Closest Point.
+- https://github.com/yu4u/cutout-random-erasing
+    - Implementation noise texture adding into raw images for synthesizing occlusions.
