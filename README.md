@@ -303,3 +303,6 @@ Thanks for these source codes and libraries helping me to complete this reposito
     - Implementation of Iteractive Closest Point.
 - https://github.com/yu4u/cutout-random-erasing
     - Implementation of noise texture adding into raw images for synthesizing occlusions.
+- https://github.com/1adrianb/2D-and-3D-face-alignment/blob/master/utils.lua
+- https://github.com/AaronJackson/vrn/issues/88
+    - Implementation of evaluation with Normalize Mean Error metric.
