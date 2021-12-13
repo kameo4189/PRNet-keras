@@ -83,7 +83,7 @@ Run file *train_model.py* to train the model, some main arguments as below:
 * hdf5dir: specify folder path contains train.hdf5 and val.hdf5
 
 Refer file *generating\image_uvmap_sequence_generator.py* for processing of augmenting and generating pairs of image and uvmap.
-All result of training process is output to folder output_\<learningrate\>\_\<lossfunct\>. The best eval loss model is outputted at file output_\<learningrate\>\_\<lossfunct\>\best_eval_loss.model
+All result of training process is output to folder output_\<learningrate\>\_\<lossfunct\>. The best eval loss model is outputted at folder output_\<learningrate\>\_\<lossfunct\>\best_eval_loss.model
 
 ##### Run training
 
@@ -177,7 +177,9 @@ An output mesh is get from response is a mat file which is converted to string, 
 * kptIdxs: array of indexes of keypoints, shape is [number of vertices], data type is int.
 * bounding_box: array of min and max values of each axis, shape is [6], data type is float.  
 
-For reading  mesh file result, you can use [scipy.io.loadmat](https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.loadmat.html) in python and [MatFileHandler](https://github.com/mahalex/MatFileHandler) in C#. 
+For reading mesh file result, you need to use the library that can reading "\*.mat" file.  
+In python, you can use [scipy.io.loadmat](https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.loadmat.html).  
+In C# .NET, you can use [MatFileHandler](https://github.com/mahalex/MatFileHandler). 
 
 1. Path: "/"
     * Description: The root-endpoint of the API
@@ -189,7 +191,9 @@ For reading  mesh file result, you can use [scipy.io.loadmat](https://docs.scipy
 2. Path: "/extract"
     * Description: Get 3D mesh from 2D images and original mat files
     * Type: POST
-    * Input: 
+    * Input:  
+      * Note: In C#, when reading mat files that are sent from python server, row and column are reverted. Therefore, I adding "matType" field in json to mark for some processing in python server before sending file that make the reading in C# correctly.
+    
     ```json 
     { 
       "matType": "<normal or dotnet>", 
@@ -273,7 +277,7 @@ For reading  mesh file result, you can use [scipy.io.loadmat](https://docs.scipy
           ...
         ],
         "imageEvalValues": [
-          "evalValues": ["<sparse 2D value of >", "<sparse 3D value>", "<dense 2D value>", "<dense 3D value>", "<reconstruction 2D value>", "<reconstruction 3D value>"],
+          "evalValues": ["<sparse 2D value>", "<sparse 3D value>", "<dense 2D value>", "<dense 3D value>", "<reconstruction 2D value>", "<reconstruction 3D value>"],
           "evalValues": ["<sparse 2D value>", "<sparse 3D value>", "<dense 2D value>", "<dense 3D value>", "<reconstruction 2D value>", "<reconstruction 3D value>"],
           ...
         ],
