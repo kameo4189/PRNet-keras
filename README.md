@@ -153,7 +153,14 @@ To make it convenient, I created a HTTP server that using RestfulAPI for request
 #### Run server
 ```bash
 python load_model_server.py --model <model path>
-```
+```  
+
+Example of output when run server on terminal.  
+Local url and internet url are outputed at below:  
+  *Public URL: NgrokTunnel: "https://1f5e-14-161-7-170.ngrok.io" -> "http://localhost:20000"*  
+<img src="evaluation_result/run_server.PNG">  
+Refer file *load_model_client.py* for implementation of request on python code.  
+Refer my github [Face3DReconstruction](https://github.com/kameo4189/Face3DReconstruction) for implementation of request on C# code.  
 
 #### APIs
 Attention is these APIs of server receive and send files that are converted to string and put inside json body. When receiving files by json, you need to convert files back from string type.  
