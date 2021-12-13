@@ -73,7 +73,7 @@ def ConstructAIServer(sharingDict):
 
     @app.get('/')
     def index():
-        return {'message': 'This is the homepage of the API '}
+        return {'message': 'This is the homepage of the PRNet API'}
 
     @app.post('/evaluate')
     def evaluate(data: InputEvalData):

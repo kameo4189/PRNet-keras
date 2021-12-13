@@ -40,7 +40,7 @@ def ConstructLoggerServer(sharingDict):
 
     @app.get('/')
     def index():
-        return {'message': 'This is the homepage of the API '}
+        return {'message': 'This is the homepage of the Logger API '}
 
     @app.get('/test')
     def test():

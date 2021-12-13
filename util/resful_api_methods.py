@@ -42,9 +42,7 @@ class InputEvalData(BaseModel):
     imageMatList: List[ImageMatEvalData]
 
 class MeshEvalResult(BaseModel):
-    # def __init__(self, **data):
-    #     super().__init__(**data)
-    evalValues: List[float] = [0 for _ in range(len(config_evaluating.EVALUATION_TYPES_DISPLAY  ))] 
+    evalValues: List[float] = [0 for _ in range(len(config_evaluating.EVALUATION_TYPES_DISPLAY))] 
 
 class ImageEvalResult(BaseModel):
     imageEvalValues: List[MeshEvalResult] = []

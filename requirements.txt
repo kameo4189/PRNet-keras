@@ -22,6 +22,5 @@ scikit_learn==1.0.1
 scipy==1.7.1
 skimage==0.0
 tensorflow==2.6.0
-torch==1.10.0
 tqdm==4.61.2
 uvicorn==0.13.1
