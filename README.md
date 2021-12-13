@@ -296,4 +296,4 @@ Thanks for these source codes and libraries helping me to complete this reposito
 - https://github.com/pglira/simpleICP
     - Implementation of Iteractive Closest Point.
 - https://github.com/yu4u/cutout-random-erasing
-    - Implementation noise texture adding into raw images for synthesizing occlusions.
+    - Implementation of noise texture adding into raw images for synthesizing occlusions.
