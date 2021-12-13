@@ -295,7 +295,7 @@ Thanks for these source codes and libraries helping me to complete this reposito
     - Dataset generaton for position maps.
 - https://github.com/abhishekkrthakur/colabcode
 - https://fastapi.tiangolo.com/
-    - Library for creating HTTP server for both local and internet
+    - Libraries for creating HTTP server for both local and internet
 - http://www.open3d.org/
 - https://github.com/heremaps/pptk
     - Libraries for displaying 3D face result
